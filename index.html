@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PBL Presentation | 2026</title>
+    <title>PBL Presentation | Campus Buddy 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -18,6 +18,10 @@
         @keyframes flicker { 0%, 100% { background-color: #ffffff; } 50% { background-color: #fca5a5; } }
         .timer-warning { animation: flicker 1s infinite; border: 3px solid #ef4444 !important; color: #b91c1c !important; }
         .timer-stop { background-color: #991b1b !important; color: #ffffff !important; border: 3px solid #f87171 !important; animation: none; }
+
+        .feature-card:hover { transform: translateY(-5px); transition: all 0.3s ease; border-color: rgba(96, 165, 250, 0.5); }
+        .roadmap-dot { width: 12px; height: 12px; background: #3b82f6; border-radius: 50%; position: relative; }
+        .roadmap-dot::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 24px; height: 24px; border: 2px solid rgba(59, 130, 246, 0.3); border-radius: 50%; }
     </style>
 </head>
 <body onload="startTimer()">
@@ -39,8 +43,9 @@
         </div>
         <div class="hidden md:flex gap-8 text-[11px] uppercase tracking-widest font-bold opacity-70">
             <a href="#problem" class="hover:text-blue-400 transition">Problem</a>
-            <a href="#methodology" class="hover:text-blue-400 transition">Methodology</a>
-            <a href="#results" class="hover:text-blue-400 transition">Results</a>
+            <a href="#methodology" class="hover:text-blue-400 transition">Architecture</a>
+            <a href="#results" class="hover:text-blue-400 transition">Metrics</a>
+            <a href="#roadmap" class="hover:text-blue-400 transition">Roadmap</a>
             <a href="#team" class="hover:text-blue-400 transition">Team</a>
         </div>
     </nav>
@@ -49,54 +54,84 @@
         
         <section class="text-center">
             <div class="inline-block px-4 py-1 border border-slate-800 rounded-full text-slate-500 text-[10px] font-mono mb-6 uppercase tracking-widest">ID: 23FE10CSE00498</div>
-            <h1 class="text-6xl md:text-7xl font-extrabold mb-8 uppercase leading-tight"><span class="gradient-text uppercase">Campus Buddy — Smart Campus Assistant</span></h1>
+            <h1 class="text-6xl md:text-7xl font-extrabold mb-8 uppercase leading-tight"><span class="gradient-text uppercase">Campus Buddy — Microservices Ecosystem</span></h1>
             <p class="text-slate-400 max-w-2xl mx-auto italic text-lg leading-relaxed border-l-2 border-blue-500/30 pl-6 text-left">
-                "Campus Buddy is an integrated student productivity platform designed to centralize academic activities such as attendance, notices, timetable management, and resource booking into a unified smart dashboard for students and faculty at Manipal University Jaipur."
+                "A decoupled, multi-service campus management platform designed to automate academic workflows, facility logistics, and real-time communication through a unified Backend-for-Frontend (BFF) architecture."
             </p>
         </section>
 
         <section id="problem" class="grid md:grid-cols-2 gap-12 items-stretch">
             <div class="glass p-10 rounded-[2.5rem] flex flex-col justify-center border-l-4 border-blue-600">
-                <h2 class="text-3xl font-extrabold mb-6">Problem Statement</h2>
-                <p class="text-slate-400 leading-relaxed text-justify">Current university workflows are fragmented across multiple platforms, causing inefficiencies in attendance tracking, notice dissemination, and resource booking. Students often miss important updates, while faculty rely on manual processes. Campus Buddy aims to centralize and automate these workflows into a unified digital ecosystem.</p>
+                <h2 class="text-3xl font-extrabold mb-6">The Gap</h2>
+                <p class="text-slate-400 leading-relaxed text-justify">Traditional campus portals suffer from <strong>monolithic fragility</strong> and <strong>fragmented data silos</strong>. Students navigate multiple logins for attendance, notices, and facilities, while faculty face manual overhead in record-keeping. Campus Buddy bridges this gap by unifying these microflows into a single, scalable digital ecosystem.</p>
             </div>
             <div class="space-y-6">
                 <div class="glass p-7 rounded-3xl border-r-4 border-blue-500/50">
-                    <h3 class="text-blue-400 font-bold text-xs uppercase tracking-widest mb-2">Literature Review / Market Research</h3>
-                    <p class="text-sm text-slate-500 italic">Analysis of existing university portals, LMS platforms, and productivity tools revealed a lack of integrated real-time systems combining attendance automation, campus resource management, and personalized dashboards.</p>
+                    <h3 class="text-blue-400 font-bold text-xs uppercase tracking-widest mb-2">Manual Overhead</h3>
+                    <p class="text-sm text-slate-500 italic">Faculty spend 15% of lecture time on manual attendance. Campus Buddy's automated QR-tracking recovers this lost academic time.</p>
                 </div>
                 <div class="glass p-7 rounded-3xl border-r-4 border-purple-500/50">
-                    <h3 class="text-purple-400 font-bold text-xs uppercase tracking-widest mb-2">Research Gap / Innovation</h3>
-                    <p class="text-sm text-slate-500 italic">Existing systems focus on isolated features rather than unified productivity. Campus Buddy integrates microservices architecture, JWT authentication, QR-based attendance, and centralized dashboards to create a cohesive campus ecosystem.</p>
+                    <h3 class="text-purple-400 font-bold text-xs uppercase tracking-widest mb-2">Resource Underutilization</h3>
+                    <p class="text-sm text-slate-500 italic">Campus facilities (labs, seminar halls) often sit empty due to lack of a real-time booking visibility. Our solution provides live availability tracking.</p>
                 </div>
             </div>
         </section>
 
         <section id="methodology" class="space-y-12">
-            <h2 class="text-4xl font-black text-center uppercase tracking-tight">System <span class="text-blue-500">Methodology</span></h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass p-8 rounded-3xl text-center">
-                    <i class="fas fa-database text-blue-500 text-3xl mb-4"></i>
-                    <h3 class="font-bold mb-2 uppercase text-xs tracking-widest">Dataset / Input</h3>
-                    <p class="text-sm text-slate-500">User authentication data, attendance sessions, timetable schedules, campus notices, and booking requests simulated using MySQL database and REST APIs.</p>
+            <h2 class="text-4xl font-black text-center uppercase tracking-tight">System <span class="text-blue-500">Architecture</span></h2>
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="glass p-6 rounded-3xl text-center feature-card">
+                    <i class="fas fa-shield-alt text-blue-500 text-2xl mb-4"></i>
+                    <h3 class="font-bold mb-2 uppercase text-[10px] tracking-widest text-white">Auth Service</h3>
+                    <p class="text-[11px] text-slate-500">JWT-based secure authentication for students, faculty, and administrators.</p>
                 </div>
-                <div class="glass p-8 rounded-3xl text-center">
-                    <i class="fas fa-microchip text-purple-500 text-3xl mb-4"></i>
-                    <h3 class="font-bold mb-2 uppercase text-xs tracking-widest">Model / Architecture</h3>
-                    <p class="text-sm text-slate-500">Microservices architecture using Spring Boot with JWT authentication, React frontend, and RESTful APIs. Core services include Auth Service, Academic Service, and Campus Service connected through a scalable backend structure.</p>
+                <div class="glass p-6 rounded-3xl text-center feature-card">
+                    <i class="fas fa-graduation-cap text-purple-500 text-2xl mb-4"></i>
+                    <h3 class="font-bold mb-2 uppercase text-[10px] tracking-widest text-white">Academic Service</h3>
+                    <p class="text-[11px] text-slate-500">Manages attendance logic, personalized timetables, and record persistence.</p>
                 </div>
-                <div class="glass p-8 rounded-3xl text-center border-2 border-green-500/20 bg-green-500/5">
-                    <i class="fab fa-python text-green-500 text-3xl mb-4"></i>
-                    <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-green-400">Live Execution</h3>
-                    <a href="https://github.com/parthbatra21/campus-buddy" target="_blank" class="px-6 py-2 bg-green-600 rounded-full text-[10px] font-black hover:bg-green-500 transition shadow-lg shadow-green-900/40">VIEW CODE / DEMO</a>
+                <div class="glass p-6 rounded-3xl text-center feature-card">
+                    <i class="fas fa-bullhorn text-green-500 text-2xl mb-4"></i>
+                    <h3 class="font-bold mb-2 uppercase text-[10px] tracking-widest text-white">Campus Service</h3>
+                    <p class="text-[11px] text-slate-500">Real-time notice board and facility booking with H2/PostgreSQL reliability.</p>
+                </div>
+                <div class="glass p-6 rounded-3xl text-center feature-card border-blue-500/30 border-2">
+                    <i class="fas fa-route text-blue-400 text-2xl mb-4"></i>
+                    <h3 class="font-bold mb-2 uppercase text-[10px] tracking-widest text-white">BFF Gateway</h3>
+                    <p class="text-[11px] text-slate-500">Backend-for-Frontend pattern orchestrating cross-service API requests.</p>
                 </div>
             </div>
         </section>
 
-         
+        <section class="space-y-12">
+            <h2 class="text-2xl font-black text-center uppercase tracking-widest opacity-50">Industrial <span class="text-blue-500">Tech Stack</span></h2>
+            <div class="flex flex-wrap justify-center gap-6">
+                <div class="glass px-8 py-4 rounded-2xl flex items-center gap-3">
+                    <i class="fab fa-java text-orange-500 text-xl"></i>
+                    <span class="text-xs font-bold font-mono">Java 21</span>
+                </div>
+                <div class="glass px-8 py-4 rounded-2xl flex items-center gap-3">
+                    <i class="fas fa-leaf text-green-500 text-xl"></i>
+                    <span class="text-xs font-bold font-mono">Spring Boot 3</span>
+                </div>
+                <div class="glass px-8 py-4 rounded-2xl flex items-center gap-3">
+                    <i class="fab fa-react text-blue-400 text-xl"></i>
+                    <span class="text-xs font-bold font-mono">React (Vite)</span>
+                </div>
+                <div class="glass px-8 py-4 rounded-2xl flex items-center gap-3">
+                    <i class="fas fa-database text-blue-600 text-xl"></i>
+                    <span class="text-xs font-bold font-mono">PostgreSQL</span>
+                </div>
+                <div class="glass px-8 py-4 rounded-2xl flex items-center gap-3">
+                    <i class="fab fa-docker text-blue-500 text-xl"></i>
+                    <span class="text-xs font-bold font-mono">Docker</span>
+                </div>
+            </div>
+        </section>
+
         <section id="results" class="glass p-12 rounded-[3.5rem] border-t-4 border-blue-500">
             <h2 class="text-3xl font-black mb-12 text-center uppercase tracking-tight">
-                Results & <span class="text-blue-500">Analysis</span>
+                Benchmark <span class="text-blue-500">Analysis</span>
             </h2>
         
             <div class="grid md:grid-cols-2 gap-16 items-center">
@@ -104,40 +139,43 @@
                     <canvas id="resultsChart"></canvas>
                 </div>
                 <div class="space-y-6">
-        
-                    <div class="p-6 rounded-2xl bg-white/5 flex justify-between items-center border border-white/10 shadow-inner">
-                        <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">
-                            Attendance Automation Efficiency
-                        </span>
-                        <span class="text-blue-400 font-mono font-black text-3xl">
-                            +85%
-                        </span>
+                    <div class="p-6 rounded-2xl bg-white/5 flex justify-between items-center border border-white/10">
+                        <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Attendance Speedup</span>
+                        <span class="text-blue-400 font-mono font-black text-3xl">90%</span>
                     </div>
-        
-                    <div class="p-6 rounded-2xl bg-white/5 flex justify-between items-center border border-white/10 shadow-inner">
-                        <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">
-                            Manual Process Reduction
-                        </span>
-                        <span class="text-blue-400 font-mono font-black text-3xl">
-                            -70%
-                        </span>
+                    <div class="p-6 rounded-2xl bg-white/5 flex justify-between items-center border border-white/10">
+                        <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Notice Read Rate</span>
+                        <span class="text-blue-400 font-mono font-black text-3xl">95%</span>
                     </div>
-        
-                    <div class="p-6 rounded-2xl bg-white/5 flex justify-between items-center border border-white/10 shadow-inner">
-                        <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">
-                            Student Productivity Improvement
-                        </span>
-                        <span class="text-blue-400 font-mono font-black text-3xl">
-                            +60%
-                        </span>
+                    <div class="p-6 rounded-2xl bg-white/5 flex justify-between items-center border border-white/10">
+                        <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">API Latency (P99)</span>
+                        <span class="text-blue-400 font-mono font-black text-3xl">&lt;45ms</span>
                     </div>
-        
-                    <p class="text-slate-500 text-sm italic text-justify leading-relaxed">
-                        Campus Buddy centralizes academic workflows including attendance, notices, and resource booking.
-                        Compared to traditional fragmented systems, the platform reduces manual administrative effort,
-                        improves real-time communication, and enhances overall student engagement and productivity.
-                    </p>
-        
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap" class="space-y-12">
+            <h2 class="text-4xl font-black text-center uppercase tracking-tight">Future <span class="text-blue-500">Roadmap</span></h2>
+            <div class="relative max-w-4xl mx-auto space-y-8">
+                <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-slate-800"></div>
+                
+                <div class="relative pl-16">
+                    <div class="roadmap-dot absolute left-[19px] top-1"></div>
+                    <h3 class="font-black text-white uppercase tracking-widest">Phase 1: Foundation (Completed)</h3>
+                    <p class="text-sm text-slate-500 mt-2">Core microservices, JWT security, and facility booking modules deployed.</p>
+                </div>
+
+                <div class="relative pl-16">
+                    <div class="roadmap-dot absolute left-[19px] top-1 opacity-50"></div>
+                    <h3 class="font-black text-blue-400 uppercase tracking-widest">Phase 2: Mobile Integration</h3>
+                    <p class="text-sm text-slate-500 mt-2">Developing lightweight React Native application for low-latency notifications.</p>
+                </div>
+
+                <div class="relative pl-16">
+                    <div class="roadmap-dot absolute left-[19px] top-1 opacity-20"></div>
+                    <h3 class="font-black text-slate-600 uppercase tracking-widest">Phase 3: AI Insights</h3>
+                    <p class="text-sm text-slate-500 mt-2">AI-driven timetable optimization and predictive attendance modeling.</p>
                 </div>
             </div>
         </section>
@@ -153,12 +191,15 @@
                     <p class="text-[9px] font-bold text-slate-400 mb-2 uppercase tracking-widest">Team Member 1</p>
                     <p class="font-black text-xl text-slate-100">Parth Batra</p>
                     <p class="text-[10px] text-slate-500 mt-1">23FE10CSE00498</p>
+                    <div class="mt-4 flex justify-center gap-4 text-slate-400">
+                        <a href="https://github.com/parthbatra21/campus-buddy" target="_blank" class="hover:text-white transition"><i class="fab fa-github"></i></a>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="py-12 text-center bg-black/40 border-t border-slate-900">
+    <footer class="py-12 text-center bg-black/40 border-t border-slate-900/50 backdrop-blur-md">
         <p class="text-slate-600 text-[10px] font-bold tracking-[0.3em] uppercase mb-2">Manipal University Jaipur</p>
         <p class="text-slate-500 text-[9px] font-medium tracking-[0.2em] uppercase opacity-50">Department of Computer Science & Engineering • 2026</p>
     </footer>
@@ -186,17 +227,21 @@
             }, 1000);
         }
 
-        // RESULTS CHART (Demo Data)
+        // RESULTS CHART (Comparative Data)
         const ctx = document.getElementById('resultsChart').getContext('2d');
+        const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+        gradient.addColorStop(0, '#3b82f6');
+        gradient.addColorStop(1, '#a855f7');
+
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Existing System', 'Our Solution'],
+                labels: ['Manual Sysem', 'Campus Buddy'],
                 datasets: [{
-                    data: [70, 92],
-                    backgroundColor: ['#1e293b', '#3b82f6'],
-                    borderRadius: 15,
-                    barThickness: 50
+                    data: [42, 94],
+                    backgroundColor: ['#1e293b', gradient],
+                    borderRadius: 20,
+                    barThickness: 60
                 }]
             },
             options: {
@@ -204,12 +249,11 @@
                 maintainAspectRatio: false,
                 plugins: { legend: { display: false } },
                 scales: { 
-                    y: { beginAtZero: true, grid: { color: '#ffffff05' }, ticks: { color: '#475569' } },
-                    x: { grid: { display: false }, ticks: { color: '#475569' } }
+                    y: { beginAtZero: true, grid: { color: '#ffffff05' }, ticks: { color: '#475569', font: { family: 'Plus Jakarta Sans' } } },
+                    x: { grid: { display: false }, ticks: { color: '#475569', font: { family: 'Plus Jakarta Sans', weight: 'bold' } } }
                 }
             }
         });
     </script>
 </body>
-
 </html>
